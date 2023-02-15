@@ -32,3 +32,5 @@ l.remove(10)
 print(l)
 l.reverse()
 print(l)
+
+
