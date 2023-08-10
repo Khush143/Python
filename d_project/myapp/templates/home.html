@@ -1,0 +1,10 @@
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.session.fname }}!</h1>
+    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphycon-log-out"></span><button>logout({{request.session.fname}})</button></a> </li><br>
+     <li><a href="{% url 'change-password' %}"><span class="glyphicon glyphycon-edit"></span><button>Change Password</button></a></li>   
+</body>
+</html>

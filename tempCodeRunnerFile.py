@@ -1,2 +1,8 @@
-
-l.remove(10)
+l.popleft()
+print(list(l))
+l.popleft()
+print(list(l))
+l.popleft()
+print(list(l))
+l.popleft()
+print(list(l))
