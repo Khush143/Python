@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .signup-container {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .signup-container button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Edit Profile</h2>
+      {% if msg %}
+        <b style="color: blue;">{{msg}}</b>
+      {% endif %}
+    <form id="signup-form" method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="text" placeholder="Username" id="username" name="username" value="{{user.username}}">
+      <input type="text" placeholder="First Name" id="fname" name="fname" value="{{user.fname}}">
+      <input type="text" placeholder="Last Name" id="lname" name="lname" value="{{user.lname}}">
+      <input type="email" placeholder="Email" id="email" name="email" value="{{user.email}}" readonly>
+      <input type="number" placeholder="Mobile" id="mobile" name="mobile" value="{{user.mobile}}">
+      <tr>
+        <td colspan="2" align="center">
+            <img src="{{user.profile_pic.url}}" width="70px" height="75px">
+        </td>
+      </tr>
+      <input type="file" placeholder="Profile Picture" name="profile_pic">
+      <button type="submit">Update Profile</button>
+      
+    </form>
+
+  </div>
+</body>
+</html>

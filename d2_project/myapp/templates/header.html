@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style type="text/css">
+        *{
+            text-decoration: none;
+        }
+        .navbar{
+            background-color: rgb(110, 217, 110); font-family: calibri; padding-left: 15px;
+        }
+        .navdiv{
+            display:flex; align-items: center; justify-content: space-between; 
+        }
+        .logo{
+            font-size: 35px; font-weight: 600;  color: white;
+        }
+        li{
+            list-style: none; display: inline-block;
+        }
+        li a{
+            color: white; font-size: 18px; font-weight: bold; margin-right: 25px;
+        }
+        button{
+            background-color: black; margin-left: 10px;border-radius: 10px; padding: 10px; width: 90px;
+        }
+        button{
+            color: rgb(218, 201, 201); font-weight: bold; font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="#">Morbido</a></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Menu</a></li>
+                <button><a href="{% url 'signup' %}">SignUp</a></button>
+                <button><a href="{% url 'login' %}">Login</a></button>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

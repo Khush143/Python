@@ -20,6 +20,7 @@ def signup(request):
                 mobile = request.POST['mobile']
                 password = request.POST['password']
                 cpassword = request.POST['cpassword']  # Removed from form, added here for confirmation
+                profile_pic=request.FILES['profile_pic']
             else:
                 msg="Password & Confirm Password Does Not Matched"
                 return render(request, 'signup.html', {'msg': msg})
@@ -32,6 +33,7 @@ def signup(request):
                 email=email,
                 mobile=mobile,
                 password=password,
+                profile_pic=profile_pic,
             )
             msg = "User Sign Up Successfully"
             return render(request, 'signup.html', {'msg': msg})
@@ -48,6 +50,7 @@ def login(request):
 			if user.password==request.POST['password']:
 				request.session['username']=user.username
 				request.session['fname']=user.fname
+				request.session['profile_pic']=user.profile_pic.url
 				return render(request,'home.html')
 			else:
 				msg="Incorrect Password"
@@ -126,3 +129,22 @@ def new_password(request):
           msg='Password & Confrm Password Dose Not Matched'
           return render(request,'new-password.html',{'email':email,'msg':msg})
     
+def profile(request):
+     user=User.objects.get(username=request.session['username'])
+     if request.method=="POST":
+        user=username=request.POST['username']
+        user=fname=request.POST['fname']
+        user=lname=request.POST['lname']
+        user=mobile=request.POST['mobile']
+        user.save()
+        try:
+            user=profile_pic=request.FILES['profile_pic']
+        except:
+            pass
+        
+        msg="Profile Updated Successfully"
+        request.session['profile_pic']=user.profile_pic.url
+        return render(request,'profile.html',{'user':user,'msg':msg})
+
+     else:
+        return render(request,'profile.html',{'user':user})

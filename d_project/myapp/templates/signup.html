@@ -48,7 +48,7 @@
       {% if msg %}
         <b style="color: blue;">{{msg}}</b>
       {% endif %}
-    <form id="signup-form" method="post" action="{% url 'signup' %}">
+    <form id="signup-form" method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
       {% csrf_token %}
       <input type="text" placeholder="Username" id="username" name="username" required>
       <input type="text" placeholder="First Name" id="fname" name="fname" required>
@@ -57,6 +57,8 @@
       <input type="number" placeholder="Mobile" id="mobile" name="mobile" required>
       <input type="password" placeholder="Password" id="password" name="password" required>
       <input type="password" placeholder="Confirm Password" id="cpassword" name="cpassword" required>
+      
+      <input type="file" placeholder="Profile Picture" name="profile_pic">
       <button type="submit">Sign Up</button>
       <h4><a href="{% url 'login' %}"> Already have an Acount?. Login hear!</h4>
     </form>
